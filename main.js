@@ -9,7 +9,7 @@ GlobalFonts.registerFromPath(fontPath, 'NotoSansJP');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
-const DEV_CHANNEL = process.env.DISCORD_BOT_DEV_CHANNEL;
+const TARGETED_CHANNEL = process.env.DISCORD_BOT_TARGETED_CHANNEL;
 const token = process.env.DISCORD_TOKEN;
 
 client.once(Events.ClientReady, async readyClient => {
@@ -87,10 +87,10 @@ client.once(Events.ClientReady, async readyClient => {
         const buffer = canvas.toBuffer('image/png');
         // Create an attachment and send it
         const attachment = new AttachmentBuilder(buffer, { name: 'progress.png' });
-        readyClient.channels.cache.get(DEV_CHANNEL).send({ files: [attachment] });
+        readyClient.channels.cache.get(TARGETED_CHANNEL).send({ files: [attachment] });
     } catch (error) {
         console.error('Error creating buffer:', error);
-        readyClient.channels.cache.get(DEV_CHANNEL).send("An error occurred while creating the image.");
+        readyClient.channels.cache.get(TARGETED_CHANNEL).send("An error occurred while creating the image.");
     }
 
     client.destroy();

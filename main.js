@@ -45,14 +45,14 @@ client.once(Events.ClientReady, async readyClient => {
 
     // Draw the stroke on top of the filled rectangles
     context.strokeRect(rectX, rectY, rectWidth, rectHeight);
-
-    // Set up the font style for the Japanese text
-    context.font = 'bold 28px NotoSansJP';
+    // Set up the font style for the text
+    context.font = 'bold 40px NotoSansJP';
+    context.fillStyle = 'white';
+    context.textAlign = 'center'; // This will align the text centrally
+    context.textBaseline = 'middle'; // This will align the text in the middle of the baseline
     const ohayouText = `おはようございました`;
     const ohayouTextX = canvas.width / 2;
     const ohayouTextY = rectY - rectHeight - 48;
-    context.textAlign = 'center'; // This will align the text centrally
-    context.textBaseline = 'middle'; // This will align the text in the middle of the baseline
 
     // Draw the Japanese text
     context.fillText(ohayouText, ohayouTextX, ohayouTextY);

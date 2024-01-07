@@ -6,6 +6,13 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install System Fonts
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y fontconfig
+            sudo apt-get install -y libfontconfig1
+
+      - run:
           name: Install Dependencies
           command: npm install
       - run:

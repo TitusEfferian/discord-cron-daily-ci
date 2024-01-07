@@ -1,5 +1,6 @@
 const { Client, Events, GatewayIntentBits, AttachmentBuilder } = require('discord.js');
 const Canvas = require('@napi-rs/canvas');
+const path = require('path');
 
 // Assuming the font file is in 'Noto_Sans_JP/static' relative to your main.js file
 const fontPath = path.join(__dirname, 'Noto_Sans_JP', 'static', 'NotoSansJP-VariableFont_wght.ttf');

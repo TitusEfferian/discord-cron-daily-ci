@@ -18,7 +18,7 @@ client.once(Events.ClientReady, async readyClient => {
     context.font = '60px sans-serif';
 
     // Select the style that will be used to fill the text in
-    context.fillStyle = 'black';
+    context.fillStyle = 'white';
     context.fillText('hello world', 50, 50)
 
     // Use the helpful Attachment class structure to process the file for you

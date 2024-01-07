@@ -57,7 +57,7 @@ client.once(Events.ClientReady, async readyClient => {
 
     context.font = '28px Arial';
     context.fillStyle = 'white';
-    const keepItUpText = `今日も頑張りましょう。`;
+    const keepItUpText = `asdasdasd`;
     const keepItUpTextX = canvas.width / 2;
     const keepItUpTextY = rectY + + textY + 48;
 

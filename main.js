@@ -1,14 +1,11 @@
 const { Client, Events, GatewayIntentBits, AttachmentBuilder } = require('discord.js');
 const Canvas = require('@napi-rs/canvas');
+const { GlobalFonts } = require('@napi-rs/canvas');
 const path = require('path');
 
-// Assuming the font file is in 'Noto_Sans_JP/static' relative to your main.js file
-const fontPath = path.join(__dirname, 'Noto_Sans_JP', 'static', 'NotoSansJP-VariableFont_wght.ttf');
-
-// Register the font
-Canvas.GlobalFonts.registerFromPath(fontPath, 'NotoSansJP');
-
-// Now you can use 'NotoSansJP' in your canvas context font property
+// Register the Noto Sans JP font
+const fontPath = path.join(__dirname, 'Noto_Sans_JP', 'NotoSansJP-VariableFont_wght.ttf');
+GlobalFonts.registerFromPath(fontPath, 'NotoSansJP');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
@@ -50,27 +47,26 @@ client.once(Events.ClientReady, async readyClient => {
     context.strokeRect(rectX, rectY, rectWidth, rectHeight);
 
     // Set up the font style for the text
-    context.font = '40px Arial';
+    context.font = '40px NotoSansJP';
     context.fillStyle = 'white';
     context.textAlign = 'center'; // This will align the text centrally
     context.textBaseline = 'middle'; // This will align the text in the middle of the baseline
 
-    // Calculate the position for the text
+    // Calculate the position for the percentage text
     const text = `${(day / yearLength * 100).toFixed(2)}% HAS PASSED FOR THIS YEAR`;
     const textX = canvas.width / 2; // This will center the text in the x-axis
-    const textY = rectY + rectHeight + 48; // This will position the text 30 pixels below the rectangle
+    const textY = rectY + rectHeight + 48; // This will position the text below the rectangle
 
-    // Draw the text
+    // Draw the percentage text
     context.fillText(text, textX, textY);
 
-
-    context.font = '28px Arial';
-    context.fillStyle = 'white';
+    // Set up the font style for the Japanese text
+    context.font = '28px NotoSansJP'; // Use the registered font
     const keepItUpText = `今日も頑張りましょう。`;
     const keepItUpTextX = canvas.width / 2;
     const keepItUpTextY = textY + 42;
 
-    // Draw the text
+    // Draw the Japanese text
     context.fillText(keepItUpText, keepItUpTextX, keepItUpTextY);
 
     try {

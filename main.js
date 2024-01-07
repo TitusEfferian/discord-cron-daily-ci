@@ -1,5 +1,4 @@
-
-const { Client, Events, GatewayIntentBits, AttachmentBuilder, } = require('discord.js');
+const { Client, Events, GatewayIntentBits, AttachmentBuilder } = require('discord.js');
 const Canvas = require('@napi-rs/canvas');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
@@ -15,15 +14,19 @@ client.once(Events.ClientReady, async readyClient => {
     context.fillStyle = 'blue'; // Square color
     context.fillRect(50, 50, 100, 100); // x, y, width, height
 
-    // Convert canvas to buffer
-    // const buffer = canvas.toBuffer();
+    try {
+        // Convert canvas to buffer
+        const buffer = canvas.toBuffer();
 
-    // Create an attachment and send it
-    // const attachment = new AttachmentBuilder(buffer, { name: 'square.png' });
+        // Create an attachment and send it
+        const attachment = new AttachmentBuilder(buffer, { name: 'square.png' });
+        readyClient.channels.cache.get(DEV_CHANNEL).send({ files: [attachment] });
+    } catch (error) {
+        console.error('Error creating buffer:', error);
+        readyClient.channels.cache.get(DEV_CHANNEL).send("An error occurred while creating the image.");
+    }
 
-    readyClient.channels.cache.get(DEV_CHANNEL).send("hello world again");
     client.destroy();
 });
-
 
 client.login(token);

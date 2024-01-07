@@ -5,9 +5,9 @@ jobs:
       - image: cimg/node:21.5.0 # specify the version of Node.js
     steps:
       - checkout
-      # - run:
-      #     name: Install Dependencies
-      #     command: npm install
+      - run:
+          name: Install Dependencies
+          command: npm install
       - run:
           name: Run Node.js Script
           command: node main.js

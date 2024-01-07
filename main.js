@@ -23,7 +23,7 @@ client.once(Events.ClientReady, async readyClient => {
 
     // // Use the helpful Attachment class structure to process the file for you
     // const attachment = new AttachmentBuilder(await canvas.encode('png'), { name: 'profile-image.png' });
-    const canvas = createCanvas(200, 200);
+    const canvas = Canvas.createCanvas(200, 200);
     const context = canvas.getContext('2d');
 
     // Draw a square

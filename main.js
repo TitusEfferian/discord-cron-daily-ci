@@ -52,7 +52,7 @@ client.once(Events.ClientReady, async readyClient => {
     context.textBaseline = 'middle'; // This will align the text in the middle of the baseline
     const ohayouText = `おはようございました`;
     const ohayouTextX = canvas.width / 2;
-    const ohayouTextY = rectY - rectHeight - 48;
+    const ohayouTextY = rectY - 48;
 
     // Draw the Japanese text
     context.fillText(ohayouText, ohayouTextX, ohayouTextY);

@@ -4,7 +4,7 @@ const { GlobalFonts } = require('@napi-rs/canvas');
 const path = require('path');
 
 // Register the Noto Sans JP font
-const fontPath = path.join(__dirname, 'Noto_Sans_JP', 'NotoSansJP-VariableFont_wght.ttf');
+const fontPath = path.join(__dirname, 'Noto_Sans_JP', 'static', 'NotoSansJP-ExtraBold.ttf');
 GlobalFonts.registerFromPath(fontPath, 'NotoSansJP');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
@@ -47,7 +47,7 @@ client.once(Events.ClientReady, async readyClient => {
     context.strokeRect(rectX, rectY, rectWidth, rectHeight);
 
     // Set up the font style for the text
-    context.font = '900 40px NotoSansJP';
+    context.font = 'bold 40px NotoSansJP';
     context.fillStyle = 'white';
     context.textAlign = 'center'; // This will align the text centrally
     context.textBaseline = 'middle'; // This will align the text in the middle of the baseline
@@ -61,7 +61,7 @@ client.once(Events.ClientReady, async readyClient => {
     context.fillText(text, textX, textY);
 
     // Set up the font style for the Japanese text
-    context.font = '900 28px NotoSansJP';
+    context.font = 'bold 28px NotoSansJP';
     const keepItUpText = `今日も頑張りましょう。`;
     const keepItUpTextX = canvas.width / 2;
     const keepItUpTextY = textY + 48;

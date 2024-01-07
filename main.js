@@ -49,10 +49,20 @@ client.once(Events.ClientReady, async readyClient => {
     // Calculate the position for the text
     const text = `${(day / yearLength * 100).toFixed(2)}% HAS PASSED FOR THIS YEAR`;
     const textX = canvas.width / 2; // This will center the text in the x-axis
-    const textY = rectY + rectHeight + 30; // This will position the text 30 pixels below the rectangle
+    const textY = rectY + rectHeight + 48; // This will position the text 30 pixels below the rectangle
 
     // Draw the text
     context.fillText(text, textX, textY);
+
+
+    context.font = '28px Arial';
+    context.fillStyle = 'white';
+    const keepItUpText = `今日も頑張りましょう。`;
+    const keepItUpTextX = canvas.width / 2;
+    const keepItUpTextY = rectY + + textY + 48;
+
+    // Draw the text
+    context.fillText(keepItUpText, keepItUpTextX, keepItUpTextY);
 
     try {
         // Convert canvas to buffer

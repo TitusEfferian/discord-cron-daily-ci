@@ -1,13 +1,13 @@
 version: 2.1
 jobs:
-  build:
+  main_script:
     docker:
       - image: cimg/node:21.5.0 # specify the version of Node.js
     steps:
       - checkout
-      - run:
-          name: Install Dependencies
-          command: npm install
+      # - run:
+      #     name: Install Dependencies
+      #     command: npm install
       - run:
           name: Run Node.js Script
           command: node yourfile.js
@@ -15,4 +15,4 @@ workflows:
   version: 2
   build:
     jobs:
-      - build
+      - main_script

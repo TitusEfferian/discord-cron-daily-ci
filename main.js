@@ -56,7 +56,7 @@ client.once(Events.ClientReady, async readyClient => {
     const textY = rectY + rectHeight + 50; // Position the text 50 pixels below the rectangle
 
     // Draw the text
-    context.fillText(text, 10, 10);
+    context.fillText(`HELLO WORLD`, 10, 10);
 
     try {
         // Convert canvas to buffer

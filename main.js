@@ -10,26 +10,55 @@ client.once(Events.ClientReady, async readyClient => {
     const canvas = Canvas.createCanvas(1000, 500);
     const context = canvas.getContext('2d');
 
-    // Fill the background with a neutral color for text contrast
-    context.fillStyle = 'grey';
-    context.fillRect(0, 0, canvas.width, canvas.height);
+    // Coordinates and dimensions for the rectangle
+    const rectX = 50;
+    const rectY = (canvas.height / 2) - 25;
+    const rectWidth = canvas.width - 100;
+    const rectHeight = 80;
+
+    // Draw a white rectangle
+    context.fillStyle = 'white';
+    context.fillRect(rectX, rectY, rectWidth, rectHeight);
+
+    // Calculate the percentage of the year that has passed
+    const now = new Date();
+    const start = new Date(now.getFullYear(), 0, 0);
+    const diff = now - start;
+    const oneDay = 1000 * 60 * 60 * 24;
+    const day = Math.floor(diff / oneDay);
+    const yearLength = (new Date(now.getFullYear(), 11, 31) - start) / oneDay + 1; // Account for leap year
+    const progress = (day / yearLength) * rectWidth;
+
+    // Draw the green background color inside the rect, filling the calculated percentage of the width
+    context.fillStyle = 'green';
+    context.fillRect(rectX, rectY, progress, rectHeight);
+
+    // Set up stroke style
+    context.strokeStyle = 'black'; // Stroke color
+    context.lineWidth = 8;         // Stroke width
+
+    // Draw the stroke on top of the filled rectangles
+    context.strokeRect(rectX, rectY, rectWidth, rectHeight);
 
     // Set up the font style for the text
-    context.font = '60px sans-serif';
+    context.font = '20px Arial';
     context.fillStyle = 'black';
-    context.textAlign = 'center';
+    context.textAlign = 'center'; // This will align the text centrally
+    context.textBaseline = 'middle'; // This will align the text in the middle of the baseline
 
-    // Draw the text in the center of the canvas
-    const text = 'HELLO WORLD';
-    const textX = canvas.width / 2;
-    const textY = canvas.height / 2;
+    // Calculate the position for the text
+    const text = `${(day / yearLength * 100).toFixed(2)}% HAS PASSED FOR THIS YEAR`;
+    const textX = canvas.width / 2; // This will center the text in the x-axis
+    const textY = rectY + rectHeight + 30; // This will position the text 30 pixels below the rectangle
+
+    // Draw the text
     context.fillText(text, textX, textY);
 
     try {
         // Convert canvas to buffer
         const buffer = canvas.toBuffer('image/png');
         // Create an attachment and send it
-        const attachment = new AttachmentBuilder(buffer, { name: 'text-test.png' });
+        const attachment = new AttachmentBuilder(buffer, { name: 'progress.png' });
         readyClient.channels.cache.get(DEV_CHANNEL).send({ files: [attachment] });
     } catch (error) {
         console.error('Error creating buffer:', error);

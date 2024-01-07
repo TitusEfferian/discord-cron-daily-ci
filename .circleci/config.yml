@@ -10,7 +10,7 @@ jobs:
       #     command: npm install
       - run:
           name: Run Node.js Script
-          command: node yourfile.js
+          command: node main.js
 workflows:
   version: 2
   build:

@@ -1,6 +1,14 @@
 const { Client, Events, GatewayIntentBits, AttachmentBuilder } = require('discord.js');
 const Canvas = require('@napi-rs/canvas');
 
+// Assuming the font file is in 'Noto_Sans_JP/static' relative to your main.js file
+const fontPath = path.join(__dirname, 'Noto_Sans_JP', 'static', 'NotoSansJP-VariableFont_wght.ttf');
+
+// Register the font
+Canvas.GlobalFonts.registerFromPath(fontPath, 'NotoSansJP');
+
+// Now you can use 'NotoSansJP' in your canvas context font property
+
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 const DEV_CHANNEL = process.env.DISCORD_BOT_DEV_CHANNEL;

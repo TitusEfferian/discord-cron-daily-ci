@@ -42,7 +42,7 @@ client.once(Events.ClientReady, async readyClient => {
 
     // Set up the font style for the text
     context.font = '20px Arial';
-    context.fillStyle = 'black';
+    context.fillStyle = 'white';
     context.textAlign = 'center'; // This will align the text centrally
     context.textBaseline = 'middle'; // This will align the text in the middle of the baseline
 
@@ -56,9 +56,9 @@ client.once(Events.ClientReady, async readyClient => {
 
     try {
         // Convert canvas to buffer
-        const buffer = canvas.toBuffer('image/jpeg');
+        const buffer = canvas.toBuffer('image/png');
         // Create an attachment and send it
-        const attachment = new AttachmentBuilder(buffer, { name: 'progress.jpeg' });
+        const attachment = new AttachmentBuilder(buffer, { name: 'progress.png' });
         readyClient.channels.cache.get(DEV_CHANNEL).send({ files: [attachment] });
     } catch (error) {
         console.error('Error creating buffer:', error);

@@ -10,10 +10,22 @@ client.once(Events.ClientReady, async readyClient => {
     const canvas = Canvas.createCanvas(1000, 500);
     const context = canvas.getContext('2d');
 
-    // Draw a square
-    context.fillStyle = 'blue'; // Square color
-    context.fillRect(50, canvas.height / 2, canvas.width - 100, 80); // x, y, width, height
-    // contex
+    // Coordinates and dimensions for the rectangle
+    const rectX = 50;
+    const rectY = (canvas.height / 2) - 25;
+    const rectWidth = canvas.width - 100;
+    const rectHeight = 80;
+
+    // Draw a white rectangle
+    context.fillStyle = 'white';
+    context.fillRect(rectX, rectY, rectWidth, rectHeight);
+
+    // Set up stroke style
+    context.strokeStyle = 'black'; // Stroke color
+    context.lineWidth = 8;         // Stroke width
+
+    // Draw the stroke
+    context.strokeRect(rectX, rectY, rectWidth, rectHeight);
 
     try {
         // Convert canvas to buffer

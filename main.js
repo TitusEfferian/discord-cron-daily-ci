@@ -12,7 +12,7 @@ client.once(Events.ClientReady, async readyClient => {
 
     // Draw a square
     context.fillStyle = 'blue'; // Square color
-    context.fillRect(50, 50, 700, 200); // x, y, width, height
+    context.fillRect(50, canvas.height / 2, canvas.width - 50, 80); // x, y, width, height
     // contex
 
     try {

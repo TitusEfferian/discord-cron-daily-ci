@@ -57,12 +57,12 @@ client.once(Events.ClientReady, async readyClient => {
 
     context.font = '28px Arial';
     context.fillStyle = 'white';
-    const keepItUpText = `asdasdasd`;
+    const keepItUpText = `今日も頑張りましょう。`;
     const keepItUpTextX = canvas.width / 2;
     const keepItUpTextY = rectY + textY + 48;
 
     // Draw the text
-    context.fillText(keepItUpText, keepItUpTextX, keepItUpTextY);
+    context.fillText(keepItUpText, 20, 20);
 
     try {
         // Convert canvas to buffer

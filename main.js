@@ -27,6 +27,10 @@ client.once(Events.ClientReady, async readyClient => {
     // Draw the stroke
     context.strokeRect(rectX, rectY, rectWidth, rectHeight);
 
+    // Draw the green background color inside the rect, filling only 50% of the width
+    context.fillStyle = 'green';
+    context.fillRect(rectX, rectY, rectWidth / 2, rectHeight);
+
     try {
         // Convert canvas to buffer
         const buffer = canvas.toBuffer('image/png');

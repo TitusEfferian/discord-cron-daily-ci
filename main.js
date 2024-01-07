@@ -23,7 +23,9 @@ client.once(Events.ClientReady, async readyClient => {
 
     // Use the helpful Attachment class structure to process the file for you
     const attachment = new AttachmentBuilder(await canvas.encode('png'), { name: 'profile-image.png' });
-    readyClient.channels.cache.get(DEV_CHANNEL).send(attachment);
+    readyClient.channels.cache.get(DEV_CHANNEL).send({
+        files:[attachment]
+    });
 
     /**
      * how to end the operation and make this code exit?

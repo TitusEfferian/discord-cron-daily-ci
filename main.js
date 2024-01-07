@@ -1,5 +1,5 @@
 // Require the necessary discord.js classes
-const { Client, Events, GatewayIntentBits } = require('discord.js');
+const { Client, Events, GatewayIntentBits, AttachmentBuilder } = require('discord.js');
 const Canvas = require('@napi-rs/canvas');
 
 // Create a new client instance

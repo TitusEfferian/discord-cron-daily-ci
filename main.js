@@ -45,7 +45,7 @@ client.once(Events.ClientReady, async readyClient => {
     context.strokeRect(rectX, rectY, rectWidth, rectHeight);
 
     // Set up the font style for the text
-    context.font = '20px Arial';
+    context.font = '20px sans-serif';
     context.fillStyle = 'black'; // Ensure text color contrasts with background
     context.textAlign = 'center'; // Align the text centrally
     // context.textBaseline = 'middle'; // Align the text in the middle of the baseline

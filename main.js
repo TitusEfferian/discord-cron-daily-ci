@@ -56,9 +56,9 @@ client.once(Events.ClientReady, async readyClient => {
 
     try {
         // Convert canvas to buffer
-        const buffer = canvas.toBuffer('image/png');
+        const buffer = canvas.toBuffer('image/jpeg');
         // Create an attachment and send it
-        const attachment = new AttachmentBuilder(buffer, { name: 'progress.png' });
+        const attachment = new AttachmentBuilder(buffer, { name: 'progress.jpeg' });
         readyClient.channels.cache.get(DEV_CHANNEL).send({ files: [attachment] });
     } catch (error) {
         console.error('Error creating buffer:', error);

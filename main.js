@@ -62,7 +62,7 @@ client.once(Events.ClientReady, async readyClient => {
     const keepItUpTextY = rectY + textY + 48;
 
     // Draw the text
-    context.fillText(keepItUpText, 20, 20);
+    context.fillText(keepItUpText, keepItUpTextX, 20);
 
     try {
         // Convert canvas to buffer

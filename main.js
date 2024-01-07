@@ -59,7 +59,7 @@ client.once(Events.ClientReady, async readyClient => {
     context.fillStyle = 'white';
     const keepItUpText = `今日も頑張りましょう。`;
     const keepItUpTextX = canvas.width / 2;
-    const keepItUpTextY = rectY + textY + 48;
+    const keepItUpTextY = rectY + rectHeight + 52;
 
     // Draw the text
     context.fillText(keepItUpText, keepItUpTextX, 20);

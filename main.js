@@ -46,7 +46,7 @@ client.once(Events.ClientReady, async readyClient => {
     // Draw the stroke on top of the filled rectangles
     context.strokeRect(rectX, rectY, rectWidth, rectHeight);
     // Set up the font style for the text
-    context.font = 'bold 40px NotoSansJP';
+    context.font = 'bold 80px NotoSansJP';
     context.fillStyle = 'white';
     context.textAlign = 'center'; // This will align the text centrally
     context.textBaseline = 'middle'; // This will align the text in the middle of the baseline

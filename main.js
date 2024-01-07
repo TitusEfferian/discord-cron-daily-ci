@@ -11,7 +11,7 @@ client.once(Events.ClientReady, async readyClient => {
     const context = canvas.getContext('2d');
 
     // Fill the background to ensure text contrast
-    context.fillStyle = 'grey'; // Use a neutral color for the background
+    context.fillStyle = 'white'; // Use a neutral color for the background
     context.fillRect(0, 0, canvas.width, canvas.height);
 
     // Coordinates and dimensions for the rectangle
@@ -48,7 +48,7 @@ client.once(Events.ClientReady, async readyClient => {
     context.font = '20px Arial';
     context.fillStyle = 'black'; // Ensure text color contrasts with background
     context.textAlign = 'center'; // Align the text centrally
-    context.textBaseline = 'middle'; // Align the text in the middle of the baseline
+    // context.textBaseline = 'middle'; // Align the text in the middle of the baseline
 
     // Calculate the position for the text
     const text = `${(day / yearLength * 100).toFixed(2)}% HAS PASSED FOR THIS YEAR`;

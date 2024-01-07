@@ -40,6 +40,20 @@ client.once(Events.ClientReady, async readyClient => {
     // Draw the stroke on top of the filled rectangles
     context.strokeRect(rectX, rectY, rectWidth, rectHeight);
 
+    // Set up the font style for the text
+    context.font = '20px Arial';
+    context.fillStyle = 'black';
+    context.textAlign = 'center'; // This will align the text centrally
+    context.textBaseline = 'middle'; // This will align the text in the middle of the baseline
+
+    // Calculate the position for the text
+    const text = `${(day / yearLength * 100).toFixed(2)}% HAS PASSED FOR THIS YEAR`;
+    const textX = canvas.width / 2; // This will center the text in the x-axis
+    const textY = rectY + rectHeight + 30; // This will position the text 30 pixels below the rectangle
+
+    // Draw the text
+    context.fillText(text, textX, textY);
+
     try {
         // Convert canvas to buffer
         const buffer = canvas.toBuffer('image/png');

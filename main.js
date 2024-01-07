@@ -20,9 +20,18 @@ client.once(Events.ClientReady, async readyClient => {
     context.fillStyle = 'white';
     context.fillRect(rectX, rectY, rectWidth, rectHeight);
 
-    // Draw the green background color inside the rect, filling only 50% of the width
+    // Calculate the percentage of the year that has passed
+    const now = new Date();
+    const start = new Date(now.getFullYear(), 0, 0);
+    const diff = now - start;
+    const oneDay = 1000 * 60 * 60 * 24;
+    const day = Math.floor(diff / oneDay);
+    const yearLength = (new Date(now.getFullYear(), 11, 31) - start) / oneDay + 1; // Account for leap year
+    const progress = (day / yearLength) * rectWidth;
+
+    // Draw the green background color inside the rect, filling the calculated percentage of the width
     context.fillStyle = 'green';
-    context.fillRect(rectX, rectY, rectWidth / 2, rectHeight);
+    context.fillRect(rectX, rectY, progress, rectHeight);
 
     // Set up stroke style
     context.strokeStyle = 'black'; // Stroke color
@@ -35,7 +44,7 @@ client.once(Events.ClientReady, async readyClient => {
         // Convert canvas to buffer
         const buffer = canvas.toBuffer('image/png');
         // Create an attachment and send it
-        const attachment = new AttachmentBuilder(buffer, { name: 'square.png' });
+        const attachment = new AttachmentBuilder(buffer, { name: 'progress.png' });
         readyClient.channels.cache.get(DEV_CHANNEL).send({ files: [attachment] });
     } catch (error) {
         console.error('Error creating buffer:', error);

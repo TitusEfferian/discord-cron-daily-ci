@@ -16,7 +16,7 @@ client.once(Events.ClientReady, async readyClient => {
 
     try {
         // Convert canvas to buffer
-        const buffer = canvas.toBuffer();
+        const buffer = canvas.toBuffer('image/png');
 
         // Create an attachment and send it
         const attachment = new AttachmentBuilder(buffer, { name: 'square.png' });

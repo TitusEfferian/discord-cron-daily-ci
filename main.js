@@ -64,7 +64,7 @@ client.once(Events.ClientReady, async readyClient => {
     context.font = 'bold 28px NotoSansJP';
     const keepItUpText = `今日も頑張りましょう。`;
     const keepItUpTextX = canvas.width / 2;
-    const keepItUpTextY = textY + 42;
+    const keepItUpTextY = textY + 48;
 
     // Draw the Japanese text
     context.fillText(keepItUpText, keepItUpTextX, keepItUpTextY);
